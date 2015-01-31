@@ -1,0 +1,251 @@
+\section{Экспонента}
+Вспомним, что 
+\[
+	\yop z_n = c\ne 0\iff
+	\begin{cases}
+		\yop|z_n|=|c|;\\
+		\yop\Arg(z_n) = \Arg(c)\pmod{2\pi}.
+	\end{cases}
+\]
+\begin{Def}
+	$\forall\ z\in \C$ полагаем $e^z = \yop\left(1+\frac zn\right)^n$.
+\end{Def}
+\begin{Ut}
+	$\forall\ z=x+i\, y\in\C$ последний предел существует и равен $e^x(\cos y + i\, \sin y)$, то есть $|e^z| = e^x>0$, $\Arg e^z = \{y+2\pi k\}$.
+\end{Ut}
+\begin{Proof}
+	Пользуемся замечанием о пределе, с которого началась лекция/
+	\begin{roItems}
+	\item Пусть $z_n = \left(1+\frac zn\right)^n$. Тогда 
+		\[
+			|z_n| = \left(\left(1+\frac xn\right)^2 + \frac{y^2}{n^2}\right)^{n/2} = 
+			e^{\frac n2\ln\left(1+\frac{2x}n + \frac{x^2+y^2}{n^2}\right)} =
+			e^{\frac n2\left(\frac{2x}n + \oo\left(\frac1n\right)\right)}\te e^x,
+		\]
+		так как $\ln(1+t) = t+ \ooo t{t\to0}$.
+	\item Пусть $n\gg1$. Тогда $1+\frac zn\in\big\{(x,y),\ x>0\big\}$. Значит, 
+		\[
+			\arg\left(1+\frac zn\right) = \arctg\frac{y/n}{1+\frac xn}.
+		\]
+		Тогда используя формулу Муавра и $\arctg t  = t + \ooo t{t\to0}$, получаем
+		\[
+			\Arg(z_n) = \left\{n\cdot \arctg\frac{y}{n+x} + 2\pi k\right\}_{k\in\Z} \ni y + \ooo1{n\to+\infty} + 2\pi k \te y\pmod{2\pi}.
+		\]
+	\end{roItems}
+\end{Proof}
+
+Итак, если $z = x+i\, y$, то  $e^z = e^x(\cos y + i\,\sin y)$. Например, $e^{2\pi i} = 1$, а $e^{\pi i} = -1$.
+
+\begin{Task}
+	$\forall\ z_1$ и $z_2\in\C\pau e^{z_1}\cdot e^{z_2} = e^{z_1+z_2}$.
+\end{Task}
+Отсюда вытекает, что $\forall\ z\in \C\pau e^{z+2\pi\,i} = e^z$.
+\begin{Def}
+	Говорят, что $2\pi\, i$ "--- главный мнимый период $e^z$.
+\end{Def}
+Заметим, что для $\phi\in\R$
+\begin{itemize}
+	\item $e^{i\,\phi} = \cos\phi + i\, \sin\phi$ (если $z\ne0$, то $r = |z|,\ \phi = \arg(z)$, получим $z = r\cdot e^{i\,\phi}$, это называется показательной формой числа $z$),
+	\item $e^{- i} = \cos\phi - i\,\sin\phi$.
+\end{itemize}
+Отсюда вытекает, что 
+\[
+	\begin{cases}
+		\cos\phi = \frac{e^{i\,\phi}+e^{-i\,\phi}}2;\\
+		\sin\phi = \frac{e^{i\,\phi} - e^{-i\,\phi}}{2\,i}.
+	\end{cases}
+\]
+Возникает естественное определение
+\begin{Def}
+	$\forall\ z\in\C\pau
+		\cos z = \frac{e^{i\, z}+e^{-i\, z}}2,\ 
+		\sin z = \frac{e^{i\, z} - e^{-i\, z}}{2\,i}$.
+
+		Для тех $z\in\C$, что $\cos z\ne 0$ определяем $\tg z = \frac{\sin z}{\cos z}$. Для $z\in \C\colon z\sin z\ne0\pau \ctg z = \frac{\cos z}{\sin z}$.
+\end{Def}
+\begin{Task}
+	У основных тригонометрических функций нули только вещественные:
+	\begin{itemize}
+		\item 	$\cos z= 0\iff z = \frac\pi 2+\pi k,\ k\in\Z$;
+		\item 	$\sin z= 0\iff z = \pi k,\ k\in\Z$;
+	\end{itemize}
+\end{Task}
+Пусть $E\subset \C$, $z_0$ "--- предельная точка $E$, то есть
+\[
+	\forall\ \delta>0\pau\exists\ z\in B'(z_0,\delta)\cap E.
+\]
+\begin{Def}
+	Пусть $f\colon E\to \C$ (отображения из подмножества $\C$ в $\C$ будем называть функциями). Тогда
+	\[\yo {(E\ni) z}{z_0}f(z) = A\in C,\]
+	если $\forall\ \e>0\exists\ \delta>0\colon \forall\ z\in B'(z_0,\delta)\cap E\pau \big|f(z) - A\big|<\e$.
+\end{Def}
+\begin{Zam}
+	Если $z_0\in E$ и $\lim\limits_{\substack{z\to z_0\\z\in E}}f(z) = f(z_0)$, то $f$ называется непрерывной в точке $z_0$ по множеству $E$.
+\end{Zam}
+Многое в курсе сохраняется из $\R^2$, надо просто быть осторожным.
+\begin{Def}
+	Пусть $f$ и $g$ определены в проколотой окрестности точки $z_0$ и $g(z)\ne 0$ в проколотой окрестности $z_0$. Пишем, что $f(z)\sim g(z)$ при $z\to z_0$, если
+	\[
+		\yo z{z_0}\frac{f(z)}{g(z)} = 1;
+	\]
+	пишем, что $f(z) = \ooob{g(z)}{z\to z_0}$, если $\yo z{z_0}\frac{f(z)}{g(z)} = 0$.
+\end{Def}
+Добавку «по множеству $E$» уже не пишем, хотя можно и написать.
+\begin{Pre}
+	$\yo z0\frac{e^z-1}z = 1$, то есть $e^z - 1\sim z$ при $z\to 0$ или $e^z = 1+ z + \ooo z{z\to0}$.
+\end{Pre}
+\begin{Proof}
+	Пусть $z = x+i\, y$. Тогда заметим, что $|x|,|y|\le |z|$, а значит, если некая $h(z) = \oo(x)$, то $h(z) = \oo(z)$. Аналогично для $y$. Кроме того, используя последнее упражнение предыдущей лекции, имеем $\oo\big(g(x)\big) = \oo\Big(\big|g(x)\big|\Big)$. Тогда
+	\[
+		e^z - 1 = e^x(\cos y + i\,\sin y) - 1 =
+		\big(1 + x + \underbrace{\oo(x)}_{\oo(z)}\big)\Big(1 + \oo(y) + i \big(y + \oo(y)\big)\Big) =
+		1+ x + i\,y + \oo(z) - 1 = z + \oo(z).
+	\]
+\end{Proof}
+\begin{Task}
+	Доказать, что $\yo z0\frac{\sin z}z = 1$.
+\end{Task}
+Пусть $-\infty<\alpha<\beta<+\infty$. $\Pi_{\alpha,\beta} = \{z = x + i\, y\mid \alpha < y <\beta\}$. Для открытых множеств у нас будут соглашение о том, как их рисовать.
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\path[pattern=north east lines]	(-4,1) rectangle (4,2)
+						(-4,-2) rectangle (4,-1);
+		\draw (-4,1)--(4,1)
+		      (-4,-1)--(4,-1);
+		\draw[->] 	(-4,0) -- (4,0) node[anchor=north]{$x$};
+		\draw[->]	(0,-2) -- (0,2.1) node[anchor=east]{$i\,y$};
+		\draw	(-1,-0.5) node {$\Pi_{(\alpha,\beta)}$}
+			(0,-1) node[anchor=south east]{$i\,\alpha$}
+			(0,1)  node[anchor=north east]{$i\,\beta$};
+	\end{tikzpicture}
+	\caption{Когда множество открыто, штрихуем дополнение}
+	\label{fig:3}
+\end{figure}
+\begin{Ut}
+	Пусть в предыдущих обозначениях $\beta\le \alpha + 2\pi$. Тогда функция $w = e^z$ гомеоморфно отображает $\Pi_{(\alpha,\beta)}$ на открытый улог $V_{(\alpha,\beta)}$, где
+	\[
+		V_{(\alpha,\beta)} = \{z = r e^{i\,\phi}\mid 0< r<+\infty,\ \alpha<\phi<\beta\}.
+	\]
+\end{Ut}
+\begin{figure}[H]
+	\centering
+	\begin{tikzpicture}
+		\draw[->](-4,0)--(4.1,0) node[anchor=north west]{$x$};
+		\draw[->](0,-2)--(0,2) node[anchor=east]{$i\,y$};
+		\path[pattern=north east lines] (0,0) -- (1,2) -- (4,2) -- (4,-2) -- (0.5,-2) -- (0,0);
+		\draw   (0,0) -- (1,2)
+			(0,0) -- (0.5,-2);
+		\draw	(-1,1) node{$V_{(\alpha,\beta)}$};
+			%(0.5,0.5) node {$\alpha$};
+		\draw[->] (0.5,0) arc (0:65:0.5cm) node[anchor=west] {$\alpha$};
+		\draw[->] (0.4,0) arc (0:280:0.4cm) node[anchor=north east] {$\beta$};
+	\end{tikzpicture}
+	\caption{Отображение «экспонента»}
+	\label{fig:4}
+\end{figure}
+Рассмотрим различные прямые вида $z = z(t) = t + i\,\gamma$, $t\in(-\infty,+\infty)$. Каждая $\gamma\in(\alpha,\beta)$ задаёт прямую. Эти прямые переходят в лучи $e^z = e^t(\cos\gamma+i\,\sin\gamma)$.
+\begin{figure}[H]
+	\centering
+	\def\hpH{3}
+	\begin{minipage}{0.45\textwidth}\centering
+		\begin{tikzpicture}[scale=0.7]
+			\axeS23\tikzPiLabel{-2}2{i\,\alpha}{i\,\beta}
+			\draw   (2,0.1) node[anchor=south]{$\Pi_{(\alpha,\beta)}$}
+				(-1,-0.8) node[anchor=south]{$z$}
+				(0,-0.8) node[anchor=south west]{$i\,\gamma$};
+			\draw[dashed,ultra thick] (-\hpW,-0.8)--(\hpW,-0.8);
+		\end{tikzpicture}
+	\end{minipage}\qquad
+	\begin{minipage}{0.45\textwidth}
+		\begin{tikzpicture}[scale=0.7]
+			\axeS22\tikzVLabel34\alpha\beta
+			\draw[->](0,0)--(-3.2,-2) node[anchor=south]{$w$};
+			\draw(0,0)--(-4,-2.5);
+			\draw(-2,2)node{$V_{(\alpha,\beta)}$};
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Образ горизонтальных прямых при экспоненте}
+	\label{fig:5>}
+\end{figure}
+Теперь сделаем наоборот. Рассмотрим $z(t) = x_0 + it$, где $t\in(\alpha,\beta)$. Тогда $e^{z(t)} = e^{x_0}(\cos t+ i\,\sin t)$ "--- дуга окружности радиуса $e^{x_0}$. $\Arg\big(e^{z(t)}\big)\in(\alpha,\beta)\pmod{2\pi}$. Таким образом, куда перейдёт прямоугольник:
+\begin{figure}[H]
+	\centering
+	\begin{minipage}{0.45\textwidth}\centering
+		\begin{tikzpicture}[scale=0.7]
+			\axeS22
+			\draw(1,1) rectangle (1.5,1.5);
+			\path[pattern=north east lines] (-\hpW,-\hpH) rectangle (1,\hpH)
+							(1,1.5) rectangle (1.5,\hpH)
+							(1,-\hpH) rectangle (1.5,1)
+							(1.5,-\hpH) rectangle (\hpW,\hpH);
+		\end{tikzpicture}
+	\end{minipage}
+	$\mapS{e^z}$
+	\begin{minipage}{0.45\textwidth}\centering
+		\begin{tikzpicture}[scale=0.7]
+			\axeS22
+			\tikzSV{1}{1.5}{30}{60}
+		\end{tikzpicture}
+	\end{minipage}
+	\caption{Образ прямоугольника при экспоненте}
+	\label{fig:5}
+\end{figure}
+В частности посмотрим, куда переходит основная полоса экспоненты $\Pi{(-\pi,\pi)}$, она ещё называется областью основного периода.
+\begin{figure}[H]
+	\centering
+	\begin{minitikZ}
+		\axeS02\tikzPiLabel{-1}1{-i\,\pi}{i\,\pi}
+		\draw[->](1,0.5)--(1,0.9) node[anchor=north west]{$(2)$};
+		\draw[->](1,-0.5)--(1,-0.9) node[anchor=south west]{$(1)$};
+	\end{minitikZ}
+	$\mapS{e^z}$
+	\begin{minitikZ}
+		\axeS00
+		\draw 	(-\hpW,0.1)--(0,0.1);
+		\draw[->](1,0) arc (0:175:1cm) node[anchor=south west]{$\beta$};
+		\draw[->](1,0) arc (0:-178:1cm) node[anchor=north west]{$\alpha$};
+		\draw[->] (-2,0.6)--(-2,0.2) node[anchor=south west]{$(2)$};
+		\draw[->] (-2,-0.5)--(-2,-0.1) node[anchor=north west]{$(1)$};
+	\end{minitikZ}
+	\caption{$\exp\big(\Pi_{(-\pi,\pi)}\big) = \C_- = \C\dd\R_-$}
+	\label{fig:<+label+>}
+\end{figure}
+Теперь введём обратную функцию.
+\begin{Def}
+	Пусть $z\ne0$. Пишем, что $w\in\Ln(z)\iff z = e^w$.
+\end{Def}
+\begin{Ut}
+	В указанных обозначениях для $z = x+i\,y\ne0$ имеем $\Ln z = \Big\{\ln|z| + i\,\big(\arg(z) + 2\pi k\big)\Big|k\in\Z\Big\}$.
+\end{Ut}
+Легко видеть, что для любого $w_k\in\Ln z\pau e^{w_k} = e^{\ln|z|}\Big(\cos\big(\arg(z)+2\pi k\big) + i\,\sin\big(\arg(z)+2\pi k\big)\Big) = z$.
+\begin{Task}
+	Почему нет других решение уравнения $z = e^w$?
+\end{Task}
+Например, $\Ln(1+i) = \big\{\ln\sqrt2 + i(\pi/4+2\pi k)\big| k\in\Z\big\}$.
+\begin{Def}
+Главным значением логарифма при $z\ne0$ называется $\ln z: = \ln|z| + i\,\arg(z)$ ($\arg(z)\in(-\pi,\pi]$).
+\end{Def}
+\begin{Task}[почти доказано]
+	Функция $z = \ln w$ является обратной к функции $w = e^z$. Она непрерывно переводит $V_{(-\pi,\pi)}$ в $\Pi_{(\pi,\beta)}$.
+\end{Task}
+\begin{Def}
+	Пусть $f$ определена в окрестности точки $z_0\in\C$. Тогда предел (если он существует) вида
+	\[
+		\yo z{z_o}\frac{f(z)-f(z_0)}{z-z_0} =: f'(z_0)
+	\]
+	называется комплексной производной функции $f$ в точке $z_0$.
+\end{Def}
+Например, $\yo z{z_0}\frac{e^z - e^{z_0}}{z-z_0} = \yo{\Delta z}0\frac{\overbrace{e^{z_0+\Delta x}}^{e^{z_0}\cdot e^{\Delta z}} - e^{z_0}}{\Delta z} =
+	e^{z_0}\yo{\Delta z}0\frac{e^{\Delta z}-1}{\Delta z} = e^{z_0}$. Будем коротко писать $\big(e^z\big)'\Big|_{z_0} = e^{z_0}$ или ещё короче $\big(e^z)' = e^z$.
+	\begin{Task}
+		Найти $(\sin z)'$, $(\cos z)'$, $(\tg z)'$, $(\ctg z)'$.
+	\end{Task}
+
+	\begin{The}[о производной обратной функции]
+		Пусть $f$ имеет производную в точке $z_0$, причём $f'(z_0)\ne0$ (это уже означает, что $f$ определена в некоторой окрестности точки $z_0$). Пусть $f$ гомеоморфно переводит окрестности точки $z_0$ на некоторую окрестность точки $w_0 = f(z_0)$. Утверждается, что $g(w) = f^{-1}(w)$ имеет комплексную производную $g'(w_0) = \frac1{f'(z_0)}$.
+	\end{The}
+\begin{Proof}
+	При $\Delta z\to 0$ ($\Delta z\ne0$) имеем $\Delta w :=f(z_0+\Delta z) - f(z_0)\to 0$ и $\Delta w\ne0$ из гомеоморфности. Значит,
+	\[g'(w_0)\leftarrow \frac{\Delta z}{\Delta w} = \frac1{\left(\frac{\Delta w}{\Delta z}\right)}\to\frac1{f'(z_0)}.\]
+\end{Proof}
